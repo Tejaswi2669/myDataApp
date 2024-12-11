@@ -11,6 +11,28 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'form',
+    loadChildren: () => import('./form/form.module').then( m => m.FormPageModule)
+  },
+  {
+    path: 'list',
+    loadChildren: () => import('./list/list.module').then( m => m.ListPageModule)
+  },
+  {
+    path: 'edit/:id',
+    loadChildren: () => import('./edit/edit.module').then( m => m.EditPageModule)
+  },
+  {
+    path: 'tabs',
+    loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
+  },
+  {
+    path: '**',
+    redirectTo: 'tabs/form', // Redirect to the Form tab by default
+    pathMatch: 'full'
+  },
+
 ];
 
 @NgModule({
@@ -19,4 +41,11 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
+
+
+
 export class AppRoutingModule { }
+
+
+
+
